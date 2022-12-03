@@ -24,7 +24,11 @@ return new class extends Migration
             $table->tinyInteger('t_can_update')->default(0);
             $table->tinyInteger('t_can_delete')->default(0);
 
-            $table->foreign('t_user_id')->references('u_id')->on('users');
+            $table->foreign('t_user_id')
+                    ->references('u_id')
+                    ->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
         });
     }
 
